@@ -29,5 +29,7 @@
 
 .vacancy__field {
 	color: #ccc;
-	font-size: 14px;
+}
+
+@media (max-width: 940px) {
 }

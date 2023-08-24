@@ -1,33 +1,18 @@
 .cards__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
 }
 
-.cards__item {
-
+@media (max-width: 940px) {
+	.cards__list {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 10px;
+	}
 }
 
-.vacancy {
-
-}
-
-.vacancy__img {
-
-}
-
-.vacancy__company {
-
-}
-
-.vacancy__title {
-
-}
-
-.vacancy__fields {
-
-}
-
-.vacancy__field {
-
+@media (max-width: 640px) {
+	.cards__list {
+		padding: 24px 0 30px;
+	}
 }

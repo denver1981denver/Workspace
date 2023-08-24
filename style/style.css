@@ -22,10 +22,10 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	font-family: Inter, sans-serif;
-  font-size: 14px;
-  background-color: #f3f4f8;
-  color: #171717;
-  line-height: 1.2;
+	font-size: 14px;
+	background-color: #f3f4f8;
+	color: #171717;
+	line-height: 1.2;
 }
 
 img,
@@ -37,9 +37,9 @@ svg {
 
 button {
 	padding: 0;
-  border: 0;
+	border: 0;
 	cursor: pointer;
-  background-color: transparent;
+	background-color: transparent;
 }
 
 a {
@@ -50,7 +50,7 @@ a {
 ul {
 	padding: 0;
 	margin: 0;
-  list-style: none;
+	list-style: none;
 }
 
 h1,
@@ -61,24 +61,42 @@ p {
 }
 
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 .visually-hidden {
 	position: fixed;
-  transform: scale(0);
+	transform: scale(0);
 }
 
 .container {
-  --width: 1180px;
-  --padding: 30px;
+	--width: 1180px;
+	--padding: 30px;
 	max-width: calc(var(--width) + var(--padding) * 2);
 	margin: 0 auto;
-  padding: 0 var(--padding);
+	padding: 0 var(--padding);
 }
 
 .blue-text {
 	color: #2a18ff;
+}
+
+@media (max-width: 1140px) {
+	.container {
+		--width: 880px;
+	}
+}
+
+@media (max-width: 940px) {
+	.container {
+		--width: 680px;
+	}
+}
+
+@media (max-width: 640px) {
+	.container {
+		--padding: 15px;
+	}
 }

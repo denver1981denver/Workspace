@@ -11,8 +11,6 @@ const getData = async (url, cbSuccess, cbError) => {
     const response = await fetch(url);
     const data = await response.json();
     cbSuccess(data);
-
-    
   } catch (err) {
     cbError(err);
   }
@@ -73,11 +71,11 @@ const loadMoreVacancies = () => {
     const urlWithParams = new URL(lastUrl);
     urlWithParams.searchParams.set('page', pagination.currentPage + 1);
     urlWithParams.searchParams.set('limit', window.innerWidth < 768 ? 6 : 12);
-  
+
 
     getData(urlWithParams, renderMoreVacancies, renderError).then(() => {
       lastUrl = urlWithParams;
-  });
+    });
   }
 };
 
@@ -158,20 +156,22 @@ const openModal = id => {
 };
 
 const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        loadMoreVacancies();
-      }
-    })
-  }, {
-    rootMargin: '100px',
-  }
-)
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadMoreVacancies();
+        }
+      });
+    }, {
+      rootMargin: '100px',
+    },
+);
 
 const init = () => {
   const filterForm = document.querySelector('.filter__form');
-  
+  const filter = document.querySelector('.vacancies__filter');
+  const filterBtn = document.querySelector('.vacancies__filter-btn');
+
   // select  city
   const citySelect = document.querySelector('#city');
   const cityChoices = new Choices(citySelect, {
@@ -179,7 +179,7 @@ const init = () => {
   });
 
   getData(
-    `${API_URL}${LOCATION_URL}`,
+      `${API_URL}${LOCATION_URL}`,
       (locationData) => {
         const locations = locationData.map((location) => ({
           value: location,
@@ -197,7 +197,7 @@ const init = () => {
 
   urlWithParams.searchParams.set('limit', window.innerWidth < 768 ? 6 : 12);
   urlWithParams.searchParams.set('page', 1);
- 
+
   getData(urlWithParams, renderVacancies, renderError).then(() => {
     lastUrl = urlWithParams;
   });
@@ -229,6 +229,10 @@ const init = () => {
     });
   });
 
+  filterBtn.addEventListener('click', () => {
+    filter.classList.toggle('vacancies__filter--active');
+    filterBtn.classList.toggle('vacancies__filter-btn--active');
+  });
 };
 
 init();
